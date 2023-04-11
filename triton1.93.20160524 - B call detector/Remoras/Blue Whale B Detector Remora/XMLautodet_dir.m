@@ -122,7 +122,7 @@ for jj = 1:numx
         first_xwav = 1; %set parameters the first time
         
         % effort time; compare to wake up time in the HARP DB
-        query = sprintf('collection("Deployments")/ty:Deployment[Project="%s"][DeploymentID="%02d"][Site="%s"]/SamplingDetails/Channel/Start', project, deployment,site);
+        query = sprintf('collection("Deployments")/Deployment[Project="%s"][DeploymentId="%02d"][Site="%s"]/SamplingDetails/Channel/Start', project, deployment,site);
         start_elem = char(q.QueryTethys(query));
         
         % is this deployment even in the database?
@@ -136,7 +136,7 @@ for jj = 1:numx
             number = str2num(info{3});
             
             % construct a new query
-            query = sprintf('collection("Deployments")/ty:Deployment[Project="%s"][DeploymentID="%02d"][Site="%s"]/SamplingDetails/Channel/Start',info{1},number,info{2});
+            query = sprintf('collection("Deployments")/Deployment[Project="%s"][DeploymentId="%02d"][Site="%s"]/SamplingDetails/Channel/Start',info{1},number,info{2});
             start_elem = char(q.QueryTethys(query));
             
             if isempty(start_elem)
