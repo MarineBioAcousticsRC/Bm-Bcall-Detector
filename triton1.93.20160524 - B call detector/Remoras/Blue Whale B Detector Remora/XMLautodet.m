@@ -37,7 +37,7 @@ rdxwavhd;
 % BmB det parameter values
 if ~from_dir  
     det = Detections();
-    q = dbInit('Server', 'bandolero.ucsd.edu', 'Port', 9779); % set up query handler
+    q = dbInit('Server', 'spyhop.ucsd.edu', 'Port', 9779); % set up query handler
     userid = 'arice'; % change to your username, usually firstinitial+lastname(jdoe)
     soft = 'autodet'; % "name of the software that implements the algorithm"
     version = '1.0';  % change to reflect version the software
@@ -55,7 +55,7 @@ if ~from_dir
         PARAMS.xhd.SiteName,'alphanum'));
     
     % effort time; compare to wake up time in the HARP DB
-    query = sprintf('collection("Deployments")/ty:Deployment[Project="%s"][DeploymentID="%02d"][Site="%s"]/SamplingDetails/Channel/Start', project, deployment,site);
+    query = sprintf('collection("Deployments")/Deployment[Project="%s"][DeploymentId="%02d"][Site="%s"]/SamplingDetails/Channel/Start', project, deployment,site);
     start_elem = char(q.QueryTethys(query));
     wake_up = dbISO8601toSerialDate(strtok(...
         start_elem(8:length(start_elem)),'<'));
